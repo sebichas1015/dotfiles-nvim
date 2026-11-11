@@ -1,11 +1,9 @@
 return {
-  -- 1. Desactivar noice.nvim por completo (elimina las cajas rojas y restaura ':' nativo)
   {
     "folke/noice.nvim",
     enabled = false,
   },
 
-  -- 2. REPL interactivo con iron.nvim apuntando al .venv del proyecto
   {
     "hkupty/iron.nvim",
     branch = "master",
@@ -21,7 +19,6 @@ return {
       local iron = require("iron.core")
 
       local function get_python_path()
-        -- Buscar .venv subiendo en el árbol de directorios
         local buf_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
         local match = vim.fs.find({ ".venv" }, {
           upward = true,
@@ -36,7 +33,6 @@ return {
           end
         end
 
-        -- Ruta directa si se ejecuta en ~/genero_lab
         local direct_venv = vim.fn.expand("~/genero_lab/.venv/bin/python")
         if vim.fn.executable(direct_venv) == 1 then
           return { direct_venv }
@@ -71,7 +67,6 @@ return {
     end,
   },
 
-  -- 3. Entorno para R
   {
     "jalvesaq/Nvim-R",
     ft = { "r", "rmd" },
@@ -82,14 +77,12 @@ return {
     end,
   },
 
-  -- 4. Entorno para Rust
   {
     "mrcjkb/rustaceanvim",
     version = "^5",
     lazy = false,
   },
 
-  -- 5. Esquema de colores
   {
     "patstockwell/vim-monokai-tasty",
     lazy = false,
