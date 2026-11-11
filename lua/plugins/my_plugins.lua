@@ -12,8 +12,8 @@ return {
       { "<leader>rr", "<cmd>IronRestart<cr>", desc = "Reiniciar REPL" },
       { "<leader>rf", "<cmd>IronFocus<cr>", desc = "Enfocar REPL" },
       { "<leader>rh", "<cmd>IronHide<cr>", desc = "Ocultar REPL" },
+      { "<leader><leader>", desc = "Enviar línea a REPL" },
       { "<leader>sl", desc = "Enviar línea a REPL" },
-      { "<leader>sc", desc = "Enviar bloque a REPL" },
     },
     config = function()
       local iron = require("iron.core")
@@ -47,7 +47,7 @@ return {
 
       iron.setup({
         config = {
-          repl_open_cmd = require("iron.view").split.vertical.botright(0.4),
+          repl_open_cmd = require("iron.view").split.horizontal.botright(0.35),
           repl_definition = {
             python = {
               command = get_python_path,
@@ -59,8 +59,8 @@ return {
         },
         keymaps = {
           send_motion = "<leader>sc",
-          visual_send = "<leader>sc",
-          send_line = "<leader>sl",
+          visual_send = "<Space>",
+          send_line = "<leader><leader>",
         },
         ignore_blank_lines = true,
       })
